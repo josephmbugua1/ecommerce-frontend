@@ -71,8 +71,15 @@ deploy_staging:
 
 review_production:
   stage: review
+  image: alpine:3.20
+  manual_confirmation: "Confirm staging has been reviewed and approve production deployment"
   script:
-    - echo "Awaiting human review/approval before production deploy."
+    - echo "Approved by ${GITLAB_USER_LOGIN:-unknown} at $(date -u +%Y-%m-%dT%H:%M:%SZ)" > production-approval.txt
+    - cat production-approval.txt
+  artifacts:
+    paths:
+      - production-approval.txt
+    expire_in: 1 day
   needs:
     - deploy_staging
   when: manual
