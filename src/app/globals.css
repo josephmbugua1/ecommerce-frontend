@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fffdf8;
+  --foreground: #16161d;
+  --surface: #ffffff;
+  --brand: #1e63ff;
+  --brand-2: #0f3ba8;
+  --accent: #ff7a18;
+  --muted: #6a6b7c;
+  --ring: #adc4ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.grain-bg {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(30, 99, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(255, 122, 24, 0.2), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(15, 59, 168, 0.12), transparent 40%),
+    linear-gradient(180deg, #fffdf8 0%, #f5f8ff 100%);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.section-shell {
+  margin-inline: auto;
+  width: min(1120px, calc(100% - 2rem));
+}
+
+.card-soft {
+  border: 1px solid #e2e6f3;
+  background: var(--surface);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(22, 22, 50, 0.06), 0 12px 32px rgba(22, 22, 50, 0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.card-soft:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px -2px rgba(22, 22, 50, 0.10), 0 20px 40px rgba(22, 22, 50, 0.12);
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="Backpack product image">
+  <rect width="600" height="420" fill="#f3f4f6"/>
+  <rect x="190" y="90" width="220" height="250" rx="48" fill="#475569"/>
+  <rect x="230" y="170" width="140" height="90" rx="18" fill="#334155"/>
+  <path d="M230 100c0-35 28-63 63-63h14c35 0 63 28 63 63" fill="none" stroke="#1f2937" stroke-width="14"/>
+  <text x="180" y="390" fill="#1f2937" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Travel Backpack</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="Wallet product image">
+  <rect width="600" height="420" fill="#f4f2ef"/>
+  <rect x="120" y="140" width="360" height="180" rx="24" fill="#7a5138"/>
+  <rect x="120" y="190" width="360" height="70" rx="16" fill="#5c3b29"/>
+  <circle cx="430" cy="225" r="10" fill="#d9b587"/>
+  <text x="170" y="390" fill="#3d291d" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Minimal Leather Wallet</text>
+</svg>

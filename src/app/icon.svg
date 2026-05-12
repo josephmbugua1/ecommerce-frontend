@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ecommerce favicon">
+  <defs>
+    <linearGradient id="bagGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0EA5E9"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="tagGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#0F172A"/>
+
+  <path d="M18 25h28l-2.8 24a4 4 0 0 1-4 3H24.8a4 4 0 0 1-4-3L18 25z" fill="url(#bagGrad)"/>
+  <path d="M24 25v-3.5C24 16.8 27.8 13 32.5 13S41 16.8 41 21.5V25" fill="none" stroke="#E2E8F0" stroke-width="3" stroke-linecap="round"/>
+
+  <path d="M43 16l8 8-8 8-8-8 8-8z" fill="url(#tagGrad)"/>
+  <circle cx="43" cy="24" r="2.1" fill="#FFF7ED"/>
+
+  <path d="M27 37h10" stroke="#E0F2FE" stroke-width="3" stroke-linecap="round"/>
+  <path d="M27 43h7" stroke="#E0F2FE" stroke-width="3" stroke-linecap="round"/>
+</svg>

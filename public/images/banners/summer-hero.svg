@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-label="Summer collection banner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f3ba8"/>
+      <stop offset="50%" stop-color="#1e63ff"/>
+      <stop offset="100%" stop-color="#39a2ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="500" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="140" fill="#ffffff22"/>
+  <circle cx="180" cy="420" r="120" fill="#ffffff1a"/>
+  <text x="80" y="180" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="700">SUMMER 2026</text>
+  <text x="80" y="240" fill="#d7e5ff" font-family="Segoe UI, Arial, sans-serif" font-size="26">Fresh styles. New drops. Everyday essentials.</text>
+</svg>

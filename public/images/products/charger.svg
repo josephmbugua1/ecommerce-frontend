@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="Wireless charger product image">
+  <rect width="600" height="420" fill="#f5f9ff"/>
+  <ellipse cx="300" cy="240" rx="150" ry="58" fill="#2563eb"/>
+  <ellipse cx="300" cy="225" rx="130" ry="45" fill="#60a5fa"/>
+  <path d="M300 110v65M265 140l35-30 35 30" stroke="#1d4ed8" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="185" y="390" fill="#1f3b80" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Wireless Charger</text>
+</svg>

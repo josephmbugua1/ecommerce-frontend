@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="Headphones product image">
+  <rect width="600" height="420" fill="#eff4ff"/>
+  <path d="M160 220a140 140 0 0 1 280 0" fill="none" stroke="#1d4ed8" stroke-width="28"/>
+  <rect x="120" y="220" width="72" height="120" rx="20" fill="#0f3ba8"/>
+  <rect x="408" y="220" width="72" height="120" rx="20" fill="#0f3ba8"/>
+  <text x="36" y="390" fill="#1d2b58" font-family="Segoe UI, Arial" font-size="30" font-weight="700">Noise Cancelling Headphones</text>
+</svg>

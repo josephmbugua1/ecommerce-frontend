@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="Hoodie product image">
+  <rect width="600" height="420" fill="#fff1e8"/>
+  <path d="M220 120h160l50 90v130H170V210z" fill="#ff7a18"/>
+  <path d="M250 120c0-28 22-50 50-50s50 22 50 50" fill="none" stroke="#e46507" stroke-width="16"/>
+  <text x="170" y="390" fill="#6c2f00" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Classic Street Hoodie</text>
+</svg>

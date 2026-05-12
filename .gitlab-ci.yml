@@ -1,0 +1,107 @@
+stages:
+  - lint
+  - build
+  - deploy
+
+variables:
+  NODE_VERSION: "18"
+  CACHE_KEY: ${CI_COMMIT_REF_SLUG}
+
+cache:
+  key: ${CACHE_KEY}
+  paths:
+    - node_modules/
+    - .next/cache/
+
+# Lint stage
+lint:
+  stage: lint
+  image: node:${NODE_VERSION}-alpine
+  before_script:
+    - npm ci
+  script:
+    - npm run lint
+  artifacts:
+    reports:
+      junit: eslint-report.xml
+    expire_in: 1 week
+  only:
+    - merge_requests
+    - main
+    - develop
+
+# Build stage
+build:
+  stage: build
+  image: node:${NODE_VERSION}-alpine
+  before_script:
+    - npm ci
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - .next/
+      - public/
+      - node_modules/
+    expire_in: 1 day
+  only:
+    - merge_requests
+    - main
+    - develop
+    - tags
+
+# Deploy to Development
+deploy:dev:
+  stage: deploy
+  image: node:${NODE_VERSION}-alpine
+  environment:
+    name: development
+    url: https://dev.yourdomain.com
+  before_script:
+    - npm ci
+  script:
+    - npm run build
+    - echo "Deploying to development environment..."
+    # Add your deployment commands here
+    # Examples:
+    # - npm run export (if using static export)
+    # - docker build -t ecommerce-frontend:$CI_COMMIT_SHA .
+    # - docker push registry.gitlab.com/yourgroup/ecommerce-frontend:$CI_COMMIT_SHA
+  only:
+    - develop
+  when: manual
+
+# Deploy to Staging
+deploy:staging:
+  stage: deploy
+  image: node:${NODE_VERSION}-alpine
+  environment:
+    name: staging
+    url: https://staging.yourdomain.com
+  before_script:
+    - npm ci
+  script:
+    - npm run build
+    - echo "Deploying to staging environment..."
+    # Add your deployment commands here
+  only:
+    - develop
+  when: manual
+
+# Deploy to Production
+deploy:production:
+  stage: deploy
+  image: node:${NODE_VERSION}-alpine
+  environment:
+    name: production
+    url: https://yourdomain.com
+  before_script:
+    - npm ci
+  script:
+    - npm run build
+    - echo "Deploying to production environment..."
+    # Add your deployment commands here
+  only:
+    - main
+    - tags
+  when: manual

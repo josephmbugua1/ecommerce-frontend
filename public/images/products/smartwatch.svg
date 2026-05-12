@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="Smartwatch product image">
+  <rect width="600" height="420" fill="#eef2ff"/>
+  <rect x="240" y="40" width="120" height="340" rx="34" fill="#1e293b"/>
+  <rect x="210" y="130" width="180" height="160" rx="30" fill="#0f172a"/>
+  <rect x="235" y="155" width="130" height="110" rx="14" fill="#38bdf8"/>
+  <text x="205" y="390" fill="#1b2a57" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Smartwatch S2</text>
+</svg>

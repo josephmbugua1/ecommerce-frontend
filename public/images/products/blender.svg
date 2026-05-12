@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="Blender product image">
+  <rect width="600" height="420" fill="#eafbf5"/>
+  <rect x="240" y="80" width="120" height="170" rx="20" fill="#7de7c4" stroke="#1fa97a" stroke-width="8"/>
+  <rect x="220" y="250" width="160" height="90" rx="18" fill="#1fa97a"/>
+  <circle cx="300" cy="295" r="20" fill="#d4fff0"/>
+  <text x="170" y="390" fill="#0d5f47" font-family="Segoe UI, Arial" font-size="34" font-weight="700">Portable Blender</text>
+</svg>
