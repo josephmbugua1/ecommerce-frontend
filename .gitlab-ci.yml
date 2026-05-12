@@ -1,36 +1,42 @@
 stages:
-  - lint
+  - test
   - build
-  - deploy
+  - deploy_staging
+  - review
+  - deploy_production
 
 variables:
-  NODE_VERSION: "18"
-  CACHE_KEY: ${CI_COMMIT_REF_SLUG}
+  NODE_VERSION: "20"
+  NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.npm"
 
 cache:
-  key: ${CACHE_KEY}
+  key: "$CI_COMMIT_REF_SLUG"
   paths:
-    - node_modules/
+    - .npm/
     - .next/cache/
 
-# Lint stage
-lint:
-  stage: lint
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+test:
+  stage: test
   image: node:${NODE_VERSION}-alpine
   before_script:
     - npm ci
   script:
     - npm run lint
-  artifacts:
-    reports:
-      junit: eslint-report.xml
-    expire_in: 1 week
-  only:
-    - merge_requests
-    - main
-    - develop
+    - |
+      if node -e "const s=require('./package.json').scripts||{}; process.exit(s.test?0:1)"; then
+        npm run test
+      else
+        echo "No test script found in package.json; skipping unit tests."
+      fi
+  rules:
+    - if: $CI_COMMIT_BRANCH
+    - if: $CI_MERGE_REQUEST_ID
 
-# Build stage
 build:
   stage: build
   image: node:${NODE_VERSION}-alpine
@@ -42,66 +48,48 @@ build:
     paths:
       - .next/
       - public/
-      - node_modules/
     expire_in: 1 day
-  only:
-    - merge_requests
-    - main
-    - develop
-    - tags
+  needs:
+    - test
+  rules:
+    - if: $CI_COMMIT_BRANCH
+    - if: $CI_MERGE_REQUEST_ID
 
-# Deploy to Development
-deploy:dev:
-  stage: deploy
-  image: node:${NODE_VERSION}-alpine
-  environment:
-    name: development
-    url: https://dev.yourdomain.com
-  before_script:
-    - npm ci
-  script:
-    - npm run build
-    - echo "Deploying to development environment..."
-    # Add your deployment commands here
-    # Examples:
-    # - npm run export (if using static export)
-    # - docker build -t ecommerce-frontend:$CI_COMMIT_SHA .
-    # - docker push registry.gitlab.com/yourgroup/ecommerce-frontend:$CI_COMMIT_SHA
-  only:
-    - develop
-  when: manual
-
-# Deploy to Staging
-deploy:staging:
-  stage: deploy
+deploy_staging:
+  stage: deploy_staging
   image: node:${NODE_VERSION}-alpine
   environment:
     name: staging
     url: https://staging.yourdomain.com
-  before_script:
-    - npm ci
   script:
-    - npm run build
-    - echo "Deploying to staging environment..."
-    # Add your deployment commands here
-  only:
-    - develop
-  when: manual
+    - echo "Deploying to staging..."
+    # Replace with your real staging deployment command(s)
+  needs:
+    - build
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
 
-# Deploy to Production
-deploy:production:
-  stage: deploy
+review_production:
+  stage: review
+  script:
+    - echo "Awaiting human review/approval before production deploy."
+  needs:
+    - deploy_staging
+  when: manual
+  allow_failure: false
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+deploy_production:
+  stage: deploy_production
   image: node:${NODE_VERSION}-alpine
   environment:
     name: production
     url: https://yourdomain.com
-  before_script:
-    - npm ci
   script:
-    - npm run build
-    - echo "Deploying to production environment..."
-    # Add your deployment commands here
-  only:
-    - main
-    - tags
-  when: manual
+    - echo "Deploying to production..."
+    # Replace with your real production deployment command(s)
+  needs:
+    - review_production
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
