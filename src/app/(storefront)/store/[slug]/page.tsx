@@ -285,6 +285,7 @@ export default function StorePage() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadStorefrontState();
 
     const handleStorage = (event: StorageEvent) => {
@@ -405,6 +406,7 @@ export default function StorePage() {
   const finalizeOrder = (paymentLabel: string) => {
     if (checkoutMode === "basket") {
       // Show order confirmation
+      // eslint-disable-next-line react-hooks/purity
       const orderId = `ORD-${Date.now()}`;
       const createdAt = new Date().toISOString();
       const orderRecord: OrderRecord = {
@@ -877,7 +879,7 @@ export default function StorePage() {
             ))}
           </div>
           {filteredFeatured.length === 0 && (
-            <p className="mt-4 text-sm text-[#636884]">No featured products in {selectedCategory} matching "{q}".</p>
+            <p className="mt-4 text-sm text-[#636884]">No featured products in {selectedCategory} matching &ldquo;{q}&rdquo;.</p>
           )}
         </section>
 
@@ -995,7 +997,7 @@ export default function StorePage() {
             ))}
           </div>
           {filteredArrivals.length === 0 && (
-            <p className="mt-4 text-sm text-[#636884]">No arrivals in {selectedCategory} matching "{q}".</p>
+            <p className="mt-4 text-sm text-[#636884]">No arrivals in {selectedCategory} matching &ldquo;{q}&rdquo;.</p>
           )}
         </section>
 
